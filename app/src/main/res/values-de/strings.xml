@@ -99,6 +99,8 @@
     <string name="common_favorites">Favoriten</string>
     <string name="common_import_recipe">Rezept importieren</string>
     <string name="common_info">Information</string>
+    <string name="common_or_upper">ODER</string>
+    <string name="common_api_token">API-Token</string>
     <string name="common_ingredients">Zutaten</string>
     <string name="common_instance_url">Instanz-URL</string>
     <string name="common_keywords">Schlagwörter</string>
