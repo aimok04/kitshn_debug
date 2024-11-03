@@ -15,6 +15,8 @@ user experience.
 > [!WARNING]
 > I'm just a hobbyist developing this app in my spare time. This app not only might, but is
 > guaranteed to contain spaghetti code and actively ignores best practices.
+>
+> &T$W
 
 ## 📦 Installation
 
