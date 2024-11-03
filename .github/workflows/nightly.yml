@@ -25,6 +25,10 @@ jobs:
         run: chmod +x gradlew
       - name: Build nightly with Gradle
         run: ./gradlew :app:assembleNightly
+      - name: Lidst files
+        run: ls
+      - name: Show pwd
+        run: pwd
 
       - name: Deploy release
         uses: WebFreak001/deploy-nightly@v3.1.0
