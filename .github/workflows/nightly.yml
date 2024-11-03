@@ -48,5 +48,6 @@ jobs:
       - uses: pyTooling/Actions/releaser@r0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "nightly"
           files: |
             ./app/build/outputs/apk/nightly/app-nightly.apk
