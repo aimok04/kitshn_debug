@@ -39,9 +39,15 @@ jobs:
            SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
         run: ./gradlew assembleNightly
 
-      - name: Create Github Release
+      - name: Set time
+        run: |
+          echo "time=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
+       
+      - name: Create Github release
         uses: softprops/action-gh-release@v1
         with:
+           tag_name: n${{ env.TIME }}
+           release_name: n${{ env.TIME }}
            generate_release_notes: true
            prerelease: true
            files: |
