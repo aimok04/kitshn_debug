@@ -45,12 +45,8 @@ jobs:
         run: |
           echo "TIME=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
        
-      - name: Create Github release
-        uses: softprops/action-gh-release@v1
+      - uses: pyTooling/Actions/releaser@r0
         with:
-           tag_name: n${{ env.TIME }}
-           release_name: n${{ env.TIME }}
-           generate_release_notes: true
-           prerelease: true
-           files: |
-             ./app/build/outputs/apk/nightly/app-nightly.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            ./app/build/outputs/apk/nightly/app-nightly.apk
