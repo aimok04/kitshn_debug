@@ -35,7 +35,8 @@ body:
   - type: dropdown
     id: platform
     attributes:
-      label: On which platform(s) did this problem occur?
+      label: Platform(s)
+      description: On which platform(s) did this problem occur?
       multiple: true
       options:
         - Android
@@ -47,6 +48,6 @@ body:
     id: additional-context
     attributes:
       label: Additional context
-      description: Add images or videos if you'd like!
+      description: Add crash logs, images or videos if you'd like!
     validations:
       required: false
