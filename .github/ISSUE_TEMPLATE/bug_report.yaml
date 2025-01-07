@@ -17,7 +17,7 @@ body:
     validations:
       required: true
   - type: input
-    id: version
+    id: app-version
     attributes:
       label: App Version
       description: What version of kitshn are you running? (Check under Settings / About)
@@ -25,9 +25,9 @@ body:
     validations:
       required: true
   - type: input
-    id: version
+    id: server-version
     attributes:
-      label: Tandoor Version
+      label: Server Version
       description: What version of Tandoor Recipes are you running? (If relevant)
       placeholder: v1.5.27 
     validations:
@@ -44,9 +44,9 @@ body:
     validations:
       required: true
   - type: textarea
-    id: additional-content
+    id: additional-context
     attributes:
-      label: Additional content
+      label: Additional context
       description: Add images or videos if you'd like!
     validations:
       required: false
