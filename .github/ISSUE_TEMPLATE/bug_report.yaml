@@ -1,0 +1,52 @@
+name: 🐞 Bug
+description: File a bug report.
+title: ""
+labels: ["bug"]
+assignees:
+  - aimok04
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please explain what went wrong.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App Version
+      description: What version of kitshn are you running? (Check under Settings / About)
+      placeholder: v1.0.0-alpha.15
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Tandoor Version
+      description: What version of Tandoor Recipes are you running? (If relevant)
+      placeholder: v1.5.27 
+    validations:
+      required: false
+  - type: dropdown
+    id: platform
+    attributes:
+      label: On which platform(s) did this problem occur?
+      multiple: true
+      options:
+        - Android
+        - iOS
+        - Desktop
+    validations:
+      required: true
+  - type: textarea
+    id: additional-content
+    attributes:
+      label: Additional content
+      description: Add images or videos if you'd like!
+    validations:
+      required: false
