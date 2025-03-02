@@ -47,15 +47,17 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles          
 
       - name: build archive
+        working-directory: ./iosApp
         run: |
           xcodebuild -scheme iosApp \
-          -archivePath $RUNNER_TEMP/iosApp/iosApp.xcarchive \
+          -archivePath $RUNNER_TEMP/iosApp.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
           -destination generic/platform=iOS \
           clean archive          
 
       - name: export ipa
+        working-directory: ./iosApp
         env:
           EXPORT_OPTIONS_PLIST: ${{ secrets.APPLE_EXPORT_OPTIONS_PLIST }}
         run: |
