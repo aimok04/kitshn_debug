@@ -20,7 +20,6 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
-import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.layout.PaneAdaptedValue
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.runtime.Composable
@@ -74,7 +73,6 @@ fun KitshnListDetailPaneScaffold(
     var currentSelection by rememberSaveable { mutableStateOf<String?>(null) }
     LaunchedEffect(navigator.currentDestination) {
         if(navigator.currentDestination == null) return@LaunchedEffect
-        currentSelection = navigator.currentDestination!!.content
     }
 
     var expandDetailPane by remember { mutableStateOf(false) }
@@ -87,20 +85,6 @@ fun KitshnListDetailPaneScaffold(
             return@BackHandler
         }
 
-        if(!supportsMultiplePanes) {
-            coroutineScope.launch {
-                listPaneAnim.snapTo(1f)
-                detailPaneAnim.animateTo(0f, tween(200))
-
-                navigator.navigateBack()
-            }
-        } else {
-            navigator.navigateBack()
-        }
-    }
-
-    BackHandler(supportsMultiplePanes && navigator.currentDestination?.content != null) {
-        navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, null)
     }
 
     ListDetailPaneScaffold(
@@ -151,10 +135,8 @@ fun KitshnListDetailPaneScaffold(
                                 detailPaneAnim.snapTo(1f)
                                 listPaneAnim.animateTo(0f, tween(200))
 
-                                navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, id)
                             }
                         } else {
-                            navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, id)
                         }
                     }
                 }
@@ -190,7 +172,6 @@ fun KitshnListDetailPaneScaffold(
                                     expandDetailPane = !expandDetailPane
                                 }, {
                                     expandDetailPane = false
-                                    navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, null)
                                 },
                                 (if(supportsMultiplePanes) null else {
                                     {
@@ -198,7 +179,6 @@ fun KitshnListDetailPaneScaffold(
                                             listPaneAnim.snapTo(1f)
                                             detailPaneAnim.animateTo(0f, tween(200))
 
-                                            navigator.navigateBack()
                                         }
                                     }
                                 })
