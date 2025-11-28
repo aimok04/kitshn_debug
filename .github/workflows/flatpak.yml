@@ -1,9 +1,8 @@
-name: Build flatpak on new tag
+name: Build flatpak on new release draft
 
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 permissions:
   contents: write
