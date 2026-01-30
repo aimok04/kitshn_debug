@@ -6,8 +6,6 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest # Must be a Linux runner
     steps:
-      - name: Checkout 
-        uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume 
       - uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/tandoorrecipes/recipes:latest
