@@ -11,4 +11,8 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/tandoorrecipes/recipes:develop
-          run: /sbin/tini -- /opt/recipes/boot.sh
+          run: |
+            apk --no-cache add curl
+            /sbin/tini -- /opt/recipes/boot.sh &
+            sleep 60
+            curl http://localhost:80/openapi/?format=json
