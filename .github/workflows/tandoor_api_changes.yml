@@ -10,8 +10,7 @@ jobs:
         uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume 
       - uses: addnab/docker-run-action@v3
         with:
-          registry: ghcr.io
-          image: tandoorrecipes/recipes:develop
+          image: ghcr.io/tandoorrecipes/recipes:develop
           run: |
             sleep 60
             curl http://localhost:80/openapi/?format=json
