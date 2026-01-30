@@ -8,5 +8,8 @@ jobs:
     container:
       image: ghcr.io/tandoorrecipes/recipes:develop
     steps:
+      - name: Install curl
+        run: sudo apt-get update && sudo apt-get install -y curl
+    
       - run: sleep 60
       - run: /usr/bin/curl http://localhost:80/openapi/?format=json
