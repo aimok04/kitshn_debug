@@ -11,6 +11,8 @@ jobs:
       - name: Install curl
         run: |
           apk update && apk add --no-cache curl
+
+      - run: /sbin/tini -- /opt/recipes/boot.sh
     
       - run: sleep 60
       - run: curl http://localhost:80/openapi/?format=json
