@@ -5,14 +5,15 @@ on:
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest # Must be a Linux runner
-    container:
-      image: ghcr.io/tandoorrecipes/recipes:develop
     steps:
-      - name: Install curl
-        run: |
-          apk update && apk add --no-cache curl
-
-      - run: /sbin/tini -- /opt/recipes/boot.sh
-    
-      - run: sleep 60
-      - run: curl http://localhost:80/openapi/?format=json
+      - name: Checkout 
+        uses: actions/checkout@v2 # Required to mount the Github Workspace to a volume 
+      - uses: addnab/docker-run-action@v3
+        with:
+          registry: ghcr.io
+          image: tandoorrecipes/recipes:develop
+          run: |
+            sleep 60
+            curl http://localhost:80/openapi/?format=json
+            echo "Running Script"
+            /work/run-script
