@@ -9,7 +9,8 @@ jobs:
       image: ghcr.io/tandoorrecipes/recipes:develop
     steps:
       - name: Install curl
-        run: apt-get update && apt-get install -y curl
+        run: |
+          apk update && apk add --no-cache curl
     
       - run: sleep 60
-      - run: /usr/bin/curl http://localhost:80/openapi/?format=json
+      - run: curl http://localhost:80/openapi/?format=json
