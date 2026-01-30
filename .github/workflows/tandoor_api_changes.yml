@@ -27,4 +27,7 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           image: openapitools/openapi-diff:latest
-          options: -v ${{ github.workspace }}:/work:ro /latest.json /develop.json
+          options: -v ${{ github.workspace }}:/work:ro
+          run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /latest.json /develop.json --html out.html --json out.json
+      - run: cat out.html
+      - run: cat out.json
