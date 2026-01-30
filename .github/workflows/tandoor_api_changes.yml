@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
 jobs:
   check-bats-version:
-    runs-on: ghcr.io/tandoorrecipes/recipes:develop
+    runs-on: ubuntu-latest # Must be a Linux runner
+    container:
+      image: ghcr.io/tandoorrecipes/recipes:develop
     steps:
       - run: sleep 60
       - run: curl http://localhost:80/openapi/?format=json
