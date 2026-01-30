@@ -28,6 +28,6 @@ jobs:
         with:
           image: openapitools/openapi-diff:latest
           options: -v ${{ github.workspace }}:/work:ro
-          run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /work/latest.json /work/develop.json --html out.html --json out.json
+          run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /work/latest.json /work/develop.json --html /work/out.html --json /work/out.json
       - run: cat out.html
       - run: cat out.json
