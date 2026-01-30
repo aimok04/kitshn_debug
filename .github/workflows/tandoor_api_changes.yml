@@ -24,5 +24,7 @@ jobs:
             /sbin/tini -- /opt/recipes/boot.sh &
             sleep 30
             wget -O /work/develop.json http://localhost:80/openapi/?format=json
-      - run: ls
-      - run: ls ${{ github.workspace }}
+      - uses: addnab/docker-run-action@v3
+        with:
+          image: openapitools/openapi-diff:latest
+          options: -v ${{ github.workspace }}:/work:ro /latest.json /develop.json
