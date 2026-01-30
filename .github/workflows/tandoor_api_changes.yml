@@ -17,7 +17,7 @@ jobs:
             wget -O /work/latest.json http://localhost:80/openapi/?format=json
       - uses: addnab/docker-run-action@v3
         with:
-          image: ghcr.io/tandoorrecipes/recipes:develop
+          image: ghcr.io/tandoorrecipes/recipes:2.3.6
           options: -v ${{ github.workspace }}:/work
           run: |
             apk --no-cache add curl
