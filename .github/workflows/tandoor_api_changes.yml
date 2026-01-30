@@ -11,8 +11,4 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/tandoorrecipes/recipes:develop
-          run: |
-            sleep 60
-            curl http://localhost:80/openapi/?format=json
-            echo "Running Script"
-            /work/run-script
+          run: /usr/local/bin/entrypoint.sh
