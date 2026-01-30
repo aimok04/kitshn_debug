@@ -11,4 +11,4 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/tandoorrecipes/recipes:develop
-          run: /usr/local/bin/entrypoint.sh
+          run: /sbin/tini -- /opt/recipes/boot.sh
