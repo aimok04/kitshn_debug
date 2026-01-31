@@ -31,17 +31,20 @@ jobs:
         with:
           image: openapitools/openapi-diff:latest
           options: -v ${{ github.workspace }}:/work
-          run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /work/latest.json /work/develop.json --html /work/out.html --json /work/out.json
-      - run: cat out.html
-      - run: cat out.json
+          run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /work/latest.json /work/develop.json --html /work/out.html --json /work/out.json --markdown /work/out.md
+      - name: Set variables
+        run: |
+            MD=$(cat /work/out.md)
+            echo "MD=$MD" >> $GITHUB_ENV
       - name: Create issue with GitHub API
         uses: actions/github-script@v6
+        env:
+          MD: ${{ env.MD }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '${{ github.event.inputs.issue_title }}' || 'Default Title',
-              body: '${{ github.event.inputs.issue_body }}' || 'Default body content.'
+              title: 'New API change detected',
+              body: '${{ env.MD }}'
             })
