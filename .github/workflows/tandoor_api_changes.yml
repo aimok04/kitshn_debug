@@ -34,7 +34,7 @@ jobs:
           run: java -Xshare:on -XX:SharedArchiveFile=/app/appcds.jsa -jar /app/openapi-diff.jar /work/latest.json /work/develop.json --html /work/out.html --json /work/out.json --markdown /work/out.md
       - name: Set variables
         run: |
-            MD=$(cat /work/out.md)
+            MD=$(cat out.md)
             echo "MD=$MD" >> $GITHUB_ENV
       - name: Create issue with GitHub API
         uses: actions/github-script@v6
